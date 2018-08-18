@@ -17,7 +17,9 @@ namespace Movies.Data
 
             if (movie == null) return null;
 
-            if (movie.Type <= MovieType.Teen)
+            //TODO: 03 - Utilizo las expresiones
+            var isEnable = Movie.IsForChild.Compile();
+            if (isEnable(movie))
                 return movie;
 
             return null;
@@ -29,7 +31,14 @@ namespace Movies.Data
 
             if (movie == null) return null;
 
-            if (movie.Quantity > 0 && movie.ReleaseDate > DateTime.Now.AddYears(-1))
+
+            //TODO: 06 - Utilizo el generic Specification
+            //var specification = new GenericSpecification<Movie>(x => x.Quantity > 0 && x.ReleaseDate > DateTime.Now.AddYears(-1));
+            //if (specification.IsSatisfiedBy(movie))
+
+            //TODO: 04 - Utilizo las expresiones
+            var isEnable = Movie.IsEnable.Compile();
+            if (isEnable(movie))
                 return movie;
 
             return null;

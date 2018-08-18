@@ -21,6 +21,13 @@ namespace Movies.Data
                 return context.Movies.ToList();
             }
         }
+        public IReadOnlyCollection<Movie> GetForChilds()
+        {
+            //TODO: 05 - Utilizo mi expresión para recuperar datos de la DB
+            using (var context = new MoviesContext())
+                return context.Movies.Where(Movie.IsForChild).ToList();
+
+        }
         public IReadOnlyList<Movie> Get(
             bool forChildsOnly,
             double minimumRating,
