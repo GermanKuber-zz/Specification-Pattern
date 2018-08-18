@@ -11,13 +11,13 @@ namespace Movies.Data
         public double Rating { get; set; }
         public int Quantity { get; set; }
 
-        //public bool IsEnable()
-        //{
-        //    return Quantity > 0 && ReleaseDate > DateTime.Now.AddYears(-1);
-        //}
-        //public bool IsForChild()
-        //{
-        //    return Type <= MovieType.Teen;
-        //}
+        public bool IsEnable()
+        {
+            return Quantity > 0 && ReleaseDate > DateTime.Now.AddYears(-1);
+        }
+        public bool IsForChild()
+        {
+            return Type <= MovieType.Teen;
+        }
     }
 }
