@@ -1,4 +1,4 @@
-﻿namespace Movies.Data
+﻿namespace Events.Data
 {
     public enum MovieType
     {

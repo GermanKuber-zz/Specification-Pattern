@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Movies
+namespace Events
 {
     class Program
     {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Movies.Data
+namespace Events.Data
 {
     public abstract class Entity
     {
