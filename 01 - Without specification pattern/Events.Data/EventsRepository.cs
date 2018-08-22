@@ -35,6 +35,9 @@ namespace Events.Data
         }
 
 
+
+
+
         public IReadOnlyList<Event> Get(int minimumGuests, bool validatedEvent)
         {
             //TODO: 02 - Se debe poder filtrar por evento Validado
@@ -45,6 +48,11 @@ namespace Events.Data
                                                  x.Validated == validatedEvent).ToList();
 
         }
+
+
+
+
+
         public IReadOnlyList<Event> Get(int minimumGuests, bool validatedEvent, bool validDate)
         {
             //TODO: 03 - Se debe poder filtrar por un evento con fecha valida
@@ -59,6 +67,10 @@ namespace Events.Data
                                                   (!validDate && (x.EventDate - DateTime.Now).Days <= 2)))
                     .ToList();
         }
+
+
+
+
 
         public IReadOnlyList<Event> Get(int minimumGuests, bool validatedEvent, bool validDate, bool premium)
         {
@@ -76,12 +88,18 @@ namespace Events.Data
                                                   premium == x.Premium))
                     .ToList();
         }
+
+        public IReadOnlyList<Event> GetValidEvent(int minimumGuests, bool validDate, bool premium)
+        {
+            //TODO: 04 - Se debe poder filtrar por un evento premium, un evento premium siempre es valido por fecha
+
+            using (var context = new EventsContext())
+                return context.Events.Where(x => x.Guests >= minimumGuests
+                                                 &&
+                                                 x.IsValid()
+                                                 ||
+                                                 premium == x.Premium)
+                    .ToList();
+        }
     }
 }
-
-//Cerrar evento
-
-////Minimo de invitados
-//Verificar fecha
-////Meetup validado
-//O sea premium 
