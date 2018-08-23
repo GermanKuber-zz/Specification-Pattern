@@ -1,19 +1,9 @@
 ﻿using System;
 using System.Linq.Expressions;
+using Events.Data.Specification;
 
 namespace Events.Data
 {
-    public abstract class Specification<T>
-    {
-        //TODO : 01 - Implemento un Specification base
-        public abstract Expression<Func<T, bool>> ToExpression();
-
-        public bool IsSatisfiedBy(T entity)
-        {
-            return ToExpression().Compile().Invoke(entity);
-        }
-    }
-
     public class ValidEventSpecification : Specification<Event>
     {
         //TODO : 02 - Implemento la validacion de Evento mediante Specification

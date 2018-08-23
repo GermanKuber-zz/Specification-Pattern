@@ -42,9 +42,9 @@ namespace Events.Data.Migrations
                     b.ToTable("Events");
 
                     b.HasData(
-                        new { Id = 1, Closed = false, EventDate = new DateTime(2018, 8, 29, 20, 23, 51, 239, DateTimeKind.Local), Guests = 6, Premium = false, Title = "Meetup.Js Event", Validated = false },
-                        new { Id = 2, Closed = false, EventDate = new DateTime(2018, 8, 23, 20, 23, 51, 242, DateTimeKind.Local), Guests = 30, Premium = false, Title = "Specification Pattern en C#", Validated = false },
-                        new { Id = 3, Closed = false, EventDate = new DateTime(2018, 8, 23, 20, 23, 51, 242, DateTimeKind.Local), Guests = 25, Premium = true, Title = "Azure and Docker", Validated = false }
+                        new { Id = 1, Closed = false, EventDate = new DateTime(2018, 8, 30, 17, 39, 45, 732, DateTimeKind.Local), Guests = 6, Premium = false, Title = "Meetup.Js Event", Validated = false },
+                        new { Id = 2, Closed = false, EventDate = new DateTime(2018, 8, 24, 17, 39, 45, 737, DateTimeKind.Local), Guests = 30, Premium = false, Title = "Specification Pattern en C#", Validated = false },
+                        new { Id = 3, Closed = false, EventDate = new DateTime(2018, 8, 24, 17, 39, 45, 737, DateTimeKind.Local), Guests = 25, Premium = true, Title = "Azure and Docker", Validated = false }
                     );
                 });
 #pragma warning restore 612, 618

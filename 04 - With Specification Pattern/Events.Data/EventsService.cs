@@ -13,7 +13,9 @@ namespace Events.Data
 
         public void CloseEvent(Event @event)
         {
-            if (@event.Validated && @event.Guests > 15)
+            //TODO : 06 - Valido el evento para poder ser cerrado
+            var eventValidateToCloseSpecification = new EventToCloseSpecification();
+            if (eventValidateToCloseSpecification.IsSatisfiedBy(@event))
             {
                 @event.Close();
                 //_eventsRepository.Update(@event)
@@ -22,12 +24,11 @@ namespace Events.Data
 
         public void CloseEventPremium(Event @event)
         {
-            var validSpecification
-                = new GenericSpecification<Event>(x => (x.EventDate - DateTime.Now).Days >= 2
-                                                                     &&
-                                                                     x.Validated);
+            //TODO : 05 - Filtro en memoria con la specification
+            var validEventSpecification = new ValidEventSpecification();
 
-            if (validSpecification.IsSatisfiedBy(@event) && @event.Premium)
+
+            if (validEventSpecification.IsSatisfiedBy(@event) && @event.Premium)
             {
                 @event.Close();
                 //_eventsRepository.Update(@event)

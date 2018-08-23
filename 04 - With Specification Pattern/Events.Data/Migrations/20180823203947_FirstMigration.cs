@@ -29,17 +29,17 @@ namespace Events.Data.Migrations
             migrationBuilder.InsertData(
                 table: "Events",
                 columns: new[] { "Id", "Closed", "EventDate", "Guests", "Premium", "Title", "Validated" },
-                values: new object[] { 1, false, new DateTime(2018, 8, 29, 20, 23, 51, 239, DateTimeKind.Local), 6, false, "Meetup.Js Event", false });
+                values: new object[] { 1, false, new DateTime(2018, 8, 30, 17, 39, 45, 732, DateTimeKind.Local), 6, false, "Meetup.Js Event", false });
 
             migrationBuilder.InsertData(
                 table: "Events",
                 columns: new[] { "Id", "Closed", "EventDate", "Guests", "Premium", "Title", "Validated" },
-                values: new object[] { 2, false, new DateTime(2018, 8, 23, 20, 23, 51, 242, DateTimeKind.Local), 30, false, "Specification Pattern en C#", false });
+                values: new object[] { 2, false, new DateTime(2018, 8, 24, 17, 39, 45, 737, DateTimeKind.Local), 30, false, "Specification Pattern en C#", false });
 
             migrationBuilder.InsertData(
                 table: "Events",
                 columns: new[] { "Id", "Closed", "EventDate", "Guests", "Premium", "Title", "Validated" },
-                values: new object[] { 3, false, new DateTime(2018, 8, 23, 20, 23, 51, 242, DateTimeKind.Local), 25, true, "Azure and Docker", false });
+                values: new object[] { 3, false, new DateTime(2018, 8, 24, 17, 39, 45, 737, DateTimeKind.Local), 25, true, "Azure and Docker", false });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

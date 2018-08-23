@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace Events.Data
+namespace Events.Data.Specification
 {
     public class GenericSpecification<T>
     {
