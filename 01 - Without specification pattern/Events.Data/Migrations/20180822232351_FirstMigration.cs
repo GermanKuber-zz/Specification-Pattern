@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Events.Data.Migrations
 {
-    public partial class First_Migration : Migration
+    public partial class FirstMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,7 +18,8 @@ namespace Events.Data.Migrations
                     Guests = table.Column<int>(nullable: false),
                     EventDate = table.Column<DateTime>(nullable: false),
                     Validated = table.Column<bool>(nullable: false),
-                    Premium = table.Column<bool>(nullable: false)
+                    Premium = table.Column<bool>(nullable: false),
+                    Closed = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -27,18 +28,18 @@ namespace Events.Data.Migrations
 
             migrationBuilder.InsertData(
                 table: "Events",
-                columns: new[] { "Id", "EventDate", "Guests", "Premium", "Title", "Validated" },
-                values: new object[] { 1, new DateTime(2018, 8, 29, 15, 2, 25, 669, DateTimeKind.Local), 6, false, "Meetup.Js Event", false });
+                columns: new[] { "Id", "Closed", "EventDate", "Guests", "Premium", "Title", "Validated" },
+                values: new object[] { 1, false, new DateTime(2018, 8, 29, 20, 23, 51, 239, DateTimeKind.Local), 6, false, "Meetup.Js Event", false });
 
             migrationBuilder.InsertData(
                 table: "Events",
-                columns: new[] { "Id", "EventDate", "Guests", "Premium", "Title", "Validated" },
-                values: new object[] { 2, new DateTime(2018, 8, 23, 15, 2, 25, 673, DateTimeKind.Local), 30, false, "Specification Pattern en C#", false });
+                columns: new[] { "Id", "Closed", "EventDate", "Guests", "Premium", "Title", "Validated" },
+                values: new object[] { 2, false, new DateTime(2018, 8, 23, 20, 23, 51, 242, DateTimeKind.Local), 30, false, "Specification Pattern en C#", false });
 
             migrationBuilder.InsertData(
                 table: "Events",
-                columns: new[] { "Id", "EventDate", "Guests", "Premium", "Title", "Validated" },
-                values: new object[] { 3, new DateTime(2018, 8, 23, 15, 2, 25, 673, DateTimeKind.Local), 25, true, "Azure and Docker", false });
+                columns: new[] { "Id", "Closed", "EventDate", "Guests", "Premium", "Title", "Validated" },
+                values: new object[] { 3, false, new DateTime(2018, 8, 23, 20, 23, 51, 242, DateTimeKind.Local), 25, true, "Azure and Docker", false });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

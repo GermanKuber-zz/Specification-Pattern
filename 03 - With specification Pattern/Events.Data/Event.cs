@@ -1,9 +1,15 @@
 ﻿using System;
+using System.Linq.Expressions;
 
 namespace Events.Data
 {
     public class Event : Entity
     {
+        public static readonly  Expression<Func<Event, bool>> IsValid =
+            x => (x.EventDate - DateTime.Now).Days >= 2
+                 &&
+                 x.Validated;
+
         public string Title { get; set; }
         public int Guests { get; set; }
         public DateTime EventDate { get; set; }
@@ -11,18 +17,12 @@ namespace Events.Data
         public bool Premium { get; set; }
         public bool Closed { get; private set; } = false;
 
-        public bool IsValid()
-        {
-            return (EventDate - DateTime.Now).Days >= 2
-                &&
-                Validated;
-        }
-
         public void Close() => Closed = true;
 
         public void CloseValidadtePremium()
         {
-            if (IsValid() && Validated && Premium)
+            var eventIsValid = Event.IsValid.Compile();
+            if (eventIsValid(this) && Validated && Premium)
                 Closed = true;
         }
     }

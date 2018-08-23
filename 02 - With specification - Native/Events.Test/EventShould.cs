@@ -21,7 +21,7 @@ namespace Events.Test
         [Fact]
         public void Be_Invalid()
         {
-            _sut.IsValid().Should().Be(false);
+            Event.IsValid.Compile()(_sut).Should().Be(false);
         }
 
         [Fact]
@@ -32,7 +32,7 @@ namespace Events.Test
                 EventDate = DateTime.Now.AddDays(3),
                 Validated = true
             };
-            _sut.IsValid().Should().Be(true);
+            Event.IsValid.Compile()(_sut).Should().Be(true);
         }
     }
 }

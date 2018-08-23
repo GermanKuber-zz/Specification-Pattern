@@ -1,4 +1,6 @@
-﻿namespace Events.Data
+﻿using System;
+
+namespace Events.Data
 {
     public class EventsService
     {
@@ -9,7 +11,6 @@
             _eventsRepository = new EventsRepository();
         }
 
-        //TODO: 06 - Para cerrar un evento este debe estar validado y  tener mas de 15 invitados
         public void CloseEvent(Event @event)
         {
             if (@event.Validated && @event.Guests > 15)
@@ -18,17 +19,22 @@
                 //_eventsRepository.Update(@event)
             }
         }
-        //TODO: 07 - Para cerrar eventos premium (deben de ser premium y  deben ser validos)
 
         public void CloseEventPremium(Event @event)
         {
-            if (@event.IsValid() && @event.Premium)
+            //TODO : 02 - Implemento validación mediante GenericSpecification
+            var validSpecification
+                = new GenericSpecification<Event>(x => (x.EventDate - DateTime.Now).Days >= 2
+                                                                     &&
+                                                                     x.Validated);
+
+            if (validSpecification.IsSatisfiedBy(@event) && @event.Premium)
             {
                 @event.Close();
                 //_eventsRepository.Update(@event)
             }
         }
-        //TODO: 08 - Para cerrar eventos premium (deben de ser premium y  deben ser validos)
+
         public void CloseValidatedPremium(Event @event)
         {
             @event.CloseValidadtePremium();

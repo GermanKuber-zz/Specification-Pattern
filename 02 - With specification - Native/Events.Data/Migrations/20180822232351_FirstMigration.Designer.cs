@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Events.Data.Migrations
 {
     [DbContext(typeof(EventsContext))]
-    [Migration("20180822180226_First_Migration")]
-    partial class First_Migration
+    [Migration("20180822232351_FirstMigration")]
+    partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,6 +26,8 @@ namespace Events.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Closed");
 
                     b.Property<DateTime>("EventDate");
 
@@ -42,9 +44,9 @@ namespace Events.Data.Migrations
                     b.ToTable("Events");
 
                     b.HasData(
-                        new { Id = 1, EventDate = new DateTime(2018, 8, 29, 15, 2, 25, 669, DateTimeKind.Local), Guests = 6, Premium = false, Title = "Meetup.Js Event", Validated = false },
-                        new { Id = 2, EventDate = new DateTime(2018, 8, 23, 15, 2, 25, 673, DateTimeKind.Local), Guests = 30, Premium = false, Title = "Specification Pattern en C#", Validated = false },
-                        new { Id = 3, EventDate = new DateTime(2018, 8, 23, 15, 2, 25, 673, DateTimeKind.Local), Guests = 25, Premium = true, Title = "Azure and Docker", Validated = false }
+                        new { Id = 1, Closed = false, EventDate = new DateTime(2018, 8, 29, 20, 23, 51, 239, DateTimeKind.Local), Guests = 6, Premium = false, Title = "Meetup.Js Event", Validated = false },
+                        new { Id = 2, Closed = false, EventDate = new DateTime(2018, 8, 23, 20, 23, 51, 242, DateTimeKind.Local), Guests = 30, Premium = false, Title = "Specification Pattern en C#", Validated = false },
+                        new { Id = 3, Closed = false, EventDate = new DateTime(2018, 8, 23, 20, 23, 51, 242, DateTimeKind.Local), Guests = 25, Premium = true, Title = "Azure and Docker", Validated = false }
                     );
                 });
 #pragma warning restore 612, 618

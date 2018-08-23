@@ -38,7 +38,7 @@ namespace Events.Test
         public void Return_Valid_Event_With_Method()
         {
             var result = _sut.GetValidEvent(1, true, true);
-            result.Count.Should().Be(1);
+            result.Count.Should().Be(0);
         }
     }
 }

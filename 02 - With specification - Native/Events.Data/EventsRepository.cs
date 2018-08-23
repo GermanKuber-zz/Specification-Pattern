@@ -29,7 +29,6 @@ namespace Events.Data
 
         public IReadOnlyList<Event> Get(int minimumGuests)
         {
-            //TODO: 01 - Se debe poder filtrar por cantidad minima de invitados
             using (var context = new EventsContext())
                 return context.Events.Where(x => x.Guests >= minimumGuests).ToList();
         }
@@ -40,8 +39,6 @@ namespace Events.Data
 
         public IReadOnlyList<Event> Get(int minimumGuests, bool validatedEvent)
         {
-            //TODO: 02 - Se debe poder filtrar por evento Validado
-
             using (var context = new EventsContext())
                 return context.Events.Where(x => x.Guests >= minimumGuests
                                                  &&
@@ -55,8 +52,6 @@ namespace Events.Data
 
         public IReadOnlyList<Event> Get(int minimumGuests, bool validatedEvent, bool validDate)
         {
-            //TODO: 03 - Se debe poder filtrar por un evento con fecha valida
-
             using (var context = new EventsContext())
                 return context.Events.Where(x => x.Guests >= minimumGuests
                                                  &&
@@ -74,8 +69,6 @@ namespace Events.Data
 
         public IReadOnlyList<Event> Get(int minimumGuests, bool validatedEvent, bool validDate, bool premium)
         {
-            //TODO: 04 - Se debe poder filtrar por un evento premium, un evento premium siempre es valido por fecha
-
             using (var context = new EventsContext())
                 return context.Events.Where(x => x.Guests >= minimumGuests
                                                  &&
@@ -91,14 +84,10 @@ namespace Events.Data
 
         public IReadOnlyList<Event> GetValidEvent(int minimumGuests, bool validDate, bool premium)
         {
-            //TODO: 05 - Implementar filtros desde metodos de clase
-
+            //TODO : 03 - Utilizo la expression para filtrar en la DB
+            var eventIsValid = Event.IsValid;
             using (var context = new EventsContext())
-                return context.Events.Where(x => x.Guests >= minimumGuests
-                                                 &&
-                                                 x.IsValid()
-                                                 ||
-                                                 premium == x.Premium)
+                return context.Events.Where(eventIsValid)
                     .ToList();
         }
     }
